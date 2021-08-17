@@ -75,10 +75,10 @@
 		5BC65B8526CB8FC000EB75FA /* ChatApplication */ = {
 			isa = PBXGroup;
 			children = (
-				5BC65BA326CB9C0000EB75FA /* Helpers */,
-				5BC65B9C26CB92FF00EB75FA /* ViewControllers */,
 				5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */,
 				5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */,
+				5BC65BA326CB9C0000EB75FA /* Helpers */,
+				5BC65B9C26CB92FF00EB75FA /* ViewControllers */,
 				5BC65B8C26CB8FC000EB75FA /* Main.storyboard */,
 				5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */,
 				5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */,

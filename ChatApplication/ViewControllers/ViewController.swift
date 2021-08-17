@@ -15,11 +15,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpElements()
+    }
+    
+    func setUpElements() {
+        Utilities.styleFilledButton(registerButton)
+        Utilities.styleHollowButton(loginButton)
+        
     }
 
     @IBAction func registerButtonTapped(_ sender: Any) {
+        
     }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
+        
     }
     
 }
