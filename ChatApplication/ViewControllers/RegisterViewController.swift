@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController {
                     // Need to  pod install the Firebase/Firestore
                     let db = Firestore.firestore()
                     //need of collection users in data base, add document with fields of "firstname", "lastname", and  "uid"
-                    db.collection("users").addDocument(data: ["completeaddress": completeAddress, "firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+                    db.collection("users").addDocument(data: ["address": completeAddress, "first_name":firstName, "last_name":lastName, "user_id": result!.user.uid ]) { (error) in
                         
                         if error != nil {
                             // Show error message

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6D913326CCDD8E00963712 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D913226CCDD8E00963712 /* GoogleService-Info.plist */; };
 		5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */; };
 		5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */; };
 		5BC65B8B26CB8FC000EB75FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8A26CB8FC000EB75FA /* ViewController.swift */; };
 		5BC65B8E26CB8FC000EB75FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B8C26CB8FC000EB75FA /* Main.storyboard */; };
 		5BC65B9026CB8FC100EB75FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */; };
 		5BC65B9326CB8FC100EB75FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */; };
-		5BC65B9B26CB91F300EB75FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B9A26CB91F300EB75FA /* GoogleService-Info.plist */; };
 		5BC65B9E26CB932900EB75FA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B9D26CB932900EB75FA /* RegisterViewController.swift */; };
 		5BC65BA026CB933A00EB75FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B9F26CB933A00EB75FA /* LoginViewController.swift */; };
 		5BC65BA226CB936C00EB75FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65BA126CB936C00EB75FA /* HomeViewController.swift */; };
@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B6D913226CCDD8E00963712 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BC65B8326CB8FC000EB75FA /* ChatApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BC65B9226CB8FC100EB75FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BC65B9426CB8FC100EB75FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BC65B9A26CB91F300EB75FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BC65B9D26CB932900EB75FA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5BC65B9F26CB933A00EB75FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BC65BA126CB936C00EB75FA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */,
 				5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */,
 				5BC65B9426CB8FC100EB75FA /* Info.plist */,
-				5BC65B9A26CB91F300EB75FA /* GoogleService-Info.plist */,
+				5B6D913226CCDD8E00963712 /* GoogleService-Info.plist */,
 			);
 			path = ChatApplication;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BC65B9326CB8FC100EB75FA /* LaunchScreen.storyboard in Resources */,
-				5BC65B9B26CB91F300EB75FA /* GoogleService-Info.plist in Resources */,
+				5B6D913326CCDD8E00963712 /* GoogleService-Info.plist in Resources */,
 				5BC65B9026CB8FC100EB75FA /* Assets.xcassets in Resources */,
 				5BC65B8E26CB8FC000EB75FA /* Main.storyboard in Resources */,
 			);
