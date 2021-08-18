@@ -15,15 +15,16 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var houseAddressTextField: UITextField!
-    @IBOutlet weak var streetTextField: UITextField!
+    @IBOutlet weak var brgyTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var provinceTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
+    @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     //label
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var passLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,14 @@ class RegisterViewController: UIViewController {
         Utilities.styleTextField(lastNameTextField)
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
+        Utilities.styleTextField(houseAddressTextField)
+        Utilities.styleTextField(brgyTextField)
+        Utilities.styleTextField(cityTextField)
+        Utilities.styleTextField(zipCodeTextField)
+        Utilities.styleTextField(provinceTextField)
+        Utilities.styleTextField(countryTextField)
         Utilities.styleTextField(confirmPasswordTextField)
         Utilities.styleFilledButton(registerButton)
-        Utilities.styleFilledLabel(addressLabel)
-        Utilities.styleFilledLabel(passLabel)
     }
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
@@ -56,7 +61,7 @@ class RegisterViewController: UIViewController {
             emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             houseAddressTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            streetTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            brgyTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             provinceTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields."
@@ -94,7 +99,8 @@ class RegisterViewController: UIViewController {
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let completeAddress = "\(houseAddressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(streetTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(provinceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))"
+            let completeAddress = "\(houseAddressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(brgyTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(cityTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(provinceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(countryTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(zipCodeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))"
+            
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in

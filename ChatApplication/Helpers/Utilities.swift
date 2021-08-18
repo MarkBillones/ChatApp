@@ -16,9 +16,9 @@ class Utilities {
         // Create the bottom line
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 1)
         
-        bottomLine.backgroundColor = UIColor.init(red: 20/255, green: 20/255, blue: 20/255, alpha: 1).cgColor
+        bottomLine.backgroundColor = UIColor.init(red: 20/255, green: 20/255, blue: 20/255, alpha: 0.3).cgColor
         
         // Remove border on text field
         textfield.borderStyle = .none
