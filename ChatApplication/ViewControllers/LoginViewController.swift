@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else {
-                
+                // manual segue to home
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
                 
                 self.view.window?.rootViewController = homeViewController

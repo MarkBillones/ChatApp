@@ -36,6 +36,14 @@ class Utilities {
         button.tintColor = UIColor.white
     }
     
+    static func styleFilledLabel(_ label:UILabel) {
+        
+        // Hollow rounded corner style
+        label.backgroundColor = .lightGray
+        label.layer.cornerRadius = 15.0
+        label.tintColor = .white
+    }
+    
     static func styleHollowButton(_ button:UIButton) {
         
         // Hollow rounded corner style
