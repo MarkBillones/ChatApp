@@ -21,7 +21,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
-        
+        configureTextfield() 
+    }
+    
+    private func configureTextfield(){
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     func setUpElements() {
@@ -32,7 +37,7 @@ class LoginViewController: UIViewController {
         // Style the elements
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(loginButton)
+        Utilities.whiteStyleHollowButton(loginButton)
         
     }
     
@@ -60,4 +65,12 @@ class LoginViewController: UIViewController {
         }
     }
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

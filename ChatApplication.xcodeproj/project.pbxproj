@@ -11,7 +11,7 @@
 		5B6D913526CD029600963712 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D913426CD029600963712 /* MapViewController.swift */; };
 		5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */; };
 		5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */; };
-		5BC65B8B26CB8FC000EB75FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8A26CB8FC000EB75FA /* ViewController.swift */; };
+		5BC65B8B26CB8FC000EB75FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8A26CB8FC000EB75FA /* MainViewController.swift */; };
 		5BC65B8E26CB8FC000EB75FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B8C26CB8FC000EB75FA /* Main.storyboard */; };
 		5BC65B9026CB8FC100EB75FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */; };
 		5BC65B9326CB8FC100EB75FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		5BC65B8326CB8FC000EB75FA /* ChatApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5BC65B8A26CB8FC000EB75FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5BC65B8A26CB8FC000EB75FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5BC65B8D26CB8FC000EB75FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BC65B9226CB8FC100EB75FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,11 +93,11 @@
 		5BC65B9C26CB92FF00EB75FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BC65B8A26CB8FC000EB75FA /* ViewController.swift */,
-				5BC65B9D26CB932900EB75FA /* RegisterViewController.swift */,
+				5BC65B8A26CB8FC000EB75FA /* MainViewController.swift */,
 				5BC65B9F26CB933A00EB75FA /* LoginViewController.swift */,
-				5BC65BA126CB936C00EB75FA /* HomeViewController.swift */,
+				5BC65B9D26CB932900EB75FA /* RegisterViewController.swift */,
 				5B6D913426CD029600963712 /* MapViewController.swift */,
+				5BC65BA126CB936C00EB75FA /* HomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BC65B8B26CB8FC000EB75FA /* ViewController.swift in Sources */,
+				5BC65B8B26CB8FC000EB75FA /* MainViewController.swift in Sources */,
 				5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */,
 				5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */,
 				5BC65BA026CB933A00EB75FA /* LoginViewController.swift in Sources */,
@@ -401,6 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ChatApplication/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,6 +421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ChatApplication/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

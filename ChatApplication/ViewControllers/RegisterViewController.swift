@@ -24,12 +24,32 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
-    //label
     
+    var completionHandler: ((String?) -> Void)?
+    var addressFromMap: String!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpElements()
+        configureTextFields()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier == "segueToMapView" else {
+            return
+        }
+//        let mapViewVC = segue.destination as! MapViewController
+    }
+    
+    private func configureTextFields(){
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        cityTextField.delegate = self
+        zipCodeTextField.delegate = self
+        provinceTextField.delegate = self
+        countryTextField.delegate = self
     }
     
     func setUpElements() {
@@ -81,6 +101,10 @@ class RegisterViewController: UIViewController {
         }
         
         return nil
+    }
+    
+    @IBAction func didTappedButton() {
+        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -141,5 +165,13 @@ class RegisterViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
         
+    }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
