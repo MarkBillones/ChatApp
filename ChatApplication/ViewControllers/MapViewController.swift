@@ -89,6 +89,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             
             DispatchQueue.main.async {
                 self.locationLabel.text = "\(String(describing: streetNumber)) \(streetName) \(city) \(country), \(postal)"
+                //comment
             }
         }
     }
