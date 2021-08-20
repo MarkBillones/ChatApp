@@ -22,27 +22,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpElements()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         setUpLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard segue.identifier == "segueToRegisterView" else {
-            return
-        }
-        
-        let registerVC = segue.destination as! RegisterViewController
-        
-        registerVC.addressFromMap = locationLabel.text
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        let registerVC = segue.destination as! RegisterViewController
+//        
+//        registerVC.passData = "I passed data"
+//        
+//    }
     
     func setUpElements() {
         
@@ -50,6 +48,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func setUpLocationManager() {
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
     }
@@ -101,8 +100,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    @IBAction func confirmButtonTapped(_ sender: Any) {
-       
-        
-    }
+//    @IBAction func confirmButtonTapped(_ sender: Any) {
+//
+//
+//    }
+    
+   
 }

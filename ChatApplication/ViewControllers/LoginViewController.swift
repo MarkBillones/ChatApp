@@ -12,6 +12,7 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     
     
+    @IBOutlet weak var loginBottomConstraints: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -21,12 +22,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
-        configureTextfield() 
+        configureTextfield()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
     }
     
     private func configureTextfield(){
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
     }
     
     func setUpElements() {
@@ -39,6 +45,23 @@ class LoginViewController: UIViewController {
         Utilities.styleTextField(passwordTextField)
         Utilities.whiteStyleHollowButton(loginButton)
         
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let info = notification.userInfo {
+            
+            let rect:CGRect = info["UIKeyboardFrameEndUserInfoKey"] as! CGRect
+            
+            self.view.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                
+                self.view.layoutIfNeeded()
+                self.loginBottomConstraints.constant = rect.height - 20
+                
+            })
+        }
     }
     
     @IBAction func logInButtonTapped(_ sender: Any) {
@@ -61,16 +84,18 @@ class LoginViewController: UIViewController {
                 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
+                
             }
         }
     }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
+        
     }
 }

@@ -27,36 +27,44 @@ class RegisterViewController: UIViewController {
     
     var completionHandler: ((String?) -> Void)?
     var addressFromMap: String!
+    var passData: String = ""
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpElements()
         configureTextFields()
+        countryTextField.placeholder = "Philippines      "
+        countryTextField.text = passData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier == "segueToMapView" else {
-            return
-        }
-//        let mapViewVC = segue.destination as! MapViewController
+        guard segue.identifier == "segueToMapView" else { return }
+        
     }
     
     private func configureTextFields(){
-        passwordTextField.delegate = self
+        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate  = self
+        emailTextField.delegate     = self
+        houseAddressTextField.delegate = self
+        brgyTextField.delegate      = self
+        provinceTextField.delegate  = self
+        cityTextField.delegate      = self
+        zipCodeTextField.delegate   = self
+        countryTextField.delegate   = self
+        passwordTextField.delegate  = self
         confirmPasswordTextField.delegate = self
-        cityTextField.delegate = self
-        zipCodeTextField.delegate = self
-        provinceTextField.delegate = self
-        countryTextField.delegate = self
+        
+        
     }
     
     func setUpElements() {
         
         // Hide the error label
         errorLabel.alpha = 0
-        
         // Style the elements
         Utilities.styleTextField(firstNameTextField)
         Utilities.styleTextField(lastNameTextField)
@@ -101,6 +109,10 @@ class RegisterViewController: UIViewController {
         }
         
         return nil
+    }
+    
+    @IBAction func unwindToRegister(_ sender: UIStoryboardSegue) {
+        print(#function)
     }
     
     @IBAction func didTappedButton() {

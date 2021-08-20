@@ -16,10 +16,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        let loginVC = self.storyboard?.instantiateViewController(identifier: "rootViewController") as? MainViewController
-        self.view.window?.rootViewController = loginVC
-        self.view.window?.makeKeyAndVisible()
+//        let loginVC = self.storyboard?.instantiateViewController(identifier: "rootViewController") as? MainViewController
+//        self.view.window?.rootViewController = loginVC
+//        self.view.window?.makeKeyAndVisible()
+//    }
     }
-    
-
 }
