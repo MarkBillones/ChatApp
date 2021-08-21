@@ -19,6 +19,18 @@ class MainViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     func setUpElements() {
         
         Utilities.styleFilledButton(registerButton)

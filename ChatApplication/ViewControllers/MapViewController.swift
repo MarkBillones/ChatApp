@@ -9,16 +9,24 @@ import CoreLocation
 import MapKit
 import UIKit
 
+protocol ModalViewControllerDelegate {
+    
+    func sendValue(stringValue: String)
+    
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var delegate: ModalViewControllerDelegate!
+    
     var previousLocation: CLLocation?
     
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 1000 //adjust the default zoom in here
+    let regionInMeters: Double = 1000 //adjust the default zoom in here, with meters
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +35,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
+        
         setUpLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        let registerVC = segue.destination as! RegisterViewController
-//        
-//        registerVC.passData = "I passed data"
-//        
-//    }
     
     func setUpElements() {
         
@@ -51,9 +52,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         if let location = locations.first {
             manager.stopUpdatingLocation()
             render(location)
@@ -84,27 +87,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let postal = placemark.postalCode ?? "Postal"
             let country = placemark.country ?? "Country"
             let city = placemark.locality ?? "City"
-            let streetNumber = placemark.subThoroughfare ?? "St. No."
-            let streetName = placemark.thoroughfare ?? "Salapan St."
+            let streetName = placemark.thoroughfare ?? "eg. Salapan St."
+            let placeName = placemark.name ?? "eg. Apple"
             
             DispatchQueue.main.async {
-                self.locationLabel.text = "\(String(describing: streetNumber)) \(streetName) \(city) \(country), \(postal)"
-                //comment
+                self.locationLabel.text = "\(placeName), \(streetName) \(city) \(country), \(postal)"
             }
         }
     }
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         
         return CLLocation(latitude: latitude, longitude: longitude)
+        
     }
     
-//    @IBAction func confirmButtonTapped(_ sender: Any) {
-//
-//
-//    }
+    @IBAction func currentLocationTapped() {
+        
+        
+        self.delegate?.sendValue(stringValue: "I sent a value, finally!")
+        dismiss(animated: true, completion: nil)
+        
+    }
     
-   
 }

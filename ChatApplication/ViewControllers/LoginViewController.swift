@@ -62,6 +62,8 @@ class LoginViewController: UIViewController {
                 
             })
         }
+        
+        
     }
     
     @IBAction func logInButtonTapped(_ sender: Any) {
@@ -79,8 +81,8 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else {
-                // manual segue to home
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                // programmatically  segue to home
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) //as? HomeViewController
                 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
@@ -97,5 +99,17 @@ extension LoginViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        self.view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            
+            self.view.layoutIfNeeded()
+            self.loginBottomConstraints.constant = 40
+            
+        })
     }
 }

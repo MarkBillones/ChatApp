@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController   {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -25,23 +25,20 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     
-    var completionHandler: ((String?) -> Void)?
-    var addressFromMap: String!
-    var passData: String = ""
+    
+    let modalVC: ModalViewControllerDelegate! = nil
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpElements()
         configureTextFields()
-        countryTextField.placeholder = "Philippines      "
-        countryTextField.text = passData
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard segue.identifier == "segueToMapView" else { return }
-        
+    func sendValue(stringValue: String) {
+        print(stringValue)
+        countryTextField.placeholder = "\(stringValue)"
     }
     
     private func configureTextFields(){
@@ -63,6 +60,7 @@ class RegisterViewController: UIViewController {
     
     func setUpElements() {
         
+        countryTextField.placeholder = "Philippines      "
         // Hide the error label
         errorLabel.alpha = 0
         // Style the elements
@@ -111,12 +109,15 @@ class RegisterViewController: UIViewController {
         return nil
     }
     
-    @IBAction func unwindToRegister(_ sender: UIStoryboardSegue) {
-        print(#function)
-    }
-    
-    @IBAction func didTappedButton() {
+    @IBAction func currentLocationTapped() {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mapVC = storyboard.instantiateViewController(identifier: "MapViewController")
+        
+        mapVC.modalPresentationStyle = .fullScreen
+        mapVC.modalTransitionStyle = .crossDissolve
+        
+        present(mapVC, animated: true, completion: nil)
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -186,4 +187,6 @@ extension RegisterViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
 }
+
