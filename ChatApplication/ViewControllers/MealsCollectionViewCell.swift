@@ -10,5 +10,6 @@ import UIKit
 class MealsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryButton: UIButton!
+
     
 }

@@ -7,12 +7,27 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+            super.viewDidLoad()
+            
+        view.layer.backgroundColor = UIColor.white.cgColor
+        delegate = self
+        
+        guard
+            let home = storyboard?.instantiateViewController(identifier: "HomeNavigationVC")
+        else { return}
+        
+        let controllers = [home]  //array of the root view controllers displayed by the tab bar interface
+        self.viewControllers = controllers
+        
+    }
+    
+    //Delegate methods
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("Should select viewController: \(viewController.title ?? "") ?")
+        return true;
     }
 
 }

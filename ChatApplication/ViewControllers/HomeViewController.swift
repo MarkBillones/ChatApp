@@ -15,7 +15,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let icon1 = UITabBarItem(title: "Meals", image: .init(systemName: "square.grid.2x2"), selectedImage: .init(systemName: "square.grid.2x2.fill"))
+        
+        self.tabBarItem = icon1
+        
     }
+
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -37,6 +42,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.designCell()
             
             return cell
+            
         }else {
             
             let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealsCollectionViewCell", for: indexPath) as! MealsCollectionViewCell
@@ -58,7 +64,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let size = (collectionView.frame.size.width ) / 2
         
-        return CGSize(width: size - 70, height: size)
+        return CGSize(width: size - 70, height: 50 ) //size = 187
     }
     
 }
@@ -67,15 +73,14 @@ extension UIView {
     
     func designCell() {
         self.layer.cornerRadius = 10
-//        self.layer.borderWidth = 2.0
         self.layer.masksToBounds = true
         
     }
     
     func designCellTwo() {
-        self.layer.cornerRadius = 10
-//        self.layer.borderWidth = 2.0
-        self.layer.masksToBounds = true
         
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
+
     }
 }

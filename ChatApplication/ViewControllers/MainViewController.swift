@@ -16,11 +16,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -29,7 +29,6 @@ class MainViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = false
     }
-    
     
     func setUpElements() {
         

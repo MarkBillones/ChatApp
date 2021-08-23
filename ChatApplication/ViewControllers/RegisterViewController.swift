@@ -129,6 +129,7 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
 //        mapVC.modalPresentationStyle = .fullScreen
 //        mapVC.modalTransitionStyle = .crossDissolve
 //        present(mapVC, animated: true, completion: nil)
+        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -184,7 +185,8 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
     
     func segueToHomeVC() {
         
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        //let homeViewController = self.storyboard?.instantiateViewController(identifier: "TabBarVC")
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController)
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()

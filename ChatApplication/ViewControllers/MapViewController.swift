@@ -123,7 +123,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
                                      cityText: cityTextResult,
                                      provinceText: provinceTextResult)
             
-            navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true) //popVC is like clicking the back button
         }
     }
 }

@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
             }
             else {
                 // programmatically  segue to home
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) //as? HomeViewController
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController) //as? HomeViewController
                 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
@@ -113,3 +113,4 @@ extension LoginViewController: UITextFieldDelegate {
         })
     }
 }
+
