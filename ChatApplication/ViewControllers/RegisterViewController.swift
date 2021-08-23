@@ -9,8 +9,9 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController   {
+class RegisterViewController: UIViewController, mapDataVCDelegate {
     
+    @IBOutlet weak var circularImage: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,9 +25,6 @@ class RegisterViewController: UIViewController   {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
-    
-    
-    let modalVC: ModalViewControllerDelegate! = nil
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +33,19 @@ class RegisterViewController: UIViewController   {
         configureTextFields()
         
     }
-    
-    func sendValue(stringValue: String) {
-        print(stringValue)
-        countryTextField.placeholder = "\(stringValue)"
+    //for the confomance of protocol mapData
+    func sendValue(countryText: String, zipCodeText: String, cityText: String, provinceText: String) {
+        
+        self.countryTextField.text = countryText
+        self.zipCodeTextField.text = zipCodeText
+        self.cityTextField.text = cityText
+        self .provinceTextField.text = provinceText
+        
     }
     
-    private func configureTextFields(){
+    func configureTextFields(){
+        
+        circularImage.layer.cornerRadius = circularImage.frame.size.width / 2
         
         firstNameTextField.delegate = self
         lastNameTextField.delegate  = self
@@ -109,15 +113,22 @@ class RegisterViewController: UIViewController   {
         return nil
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "getDataSegue" {
+            let secondVC: MapViewController = segue.destination as! MapViewController
+            secondVC.delegate = self
+        }
+    }
+    
     @IBAction func currentLocationTapped() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mapVC = storyboard.instantiateViewController(identifier: "MapViewController")
-        
-        mapVC.modalPresentationStyle = .fullScreen
-        mapVC.modalTransitionStyle = .crossDissolve
-        
-        present(mapVC, animated: true, completion: nil)
+        //this will be used when not using Segue
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let mapVC = storyboard.instantiateViewController(identifier: "MapViewController")
+//
+//        mapVC.modalPresentationStyle = .fullScreen
+//        mapVC.modalTransitionStyle = .crossDissolve
+//        present(mapVC, animated: true, completion: nil)
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -158,7 +169,7 @@ class RegisterViewController: UIViewController   {
                             self.showError(message: "Error saving user data")
                         }
                     }
-                    // Segue to the home screen
+                    // Make homeVC be the root controller, transition to Home
                     self.segueToHomeVC()
                 }
             }
@@ -189,4 +200,5 @@ extension RegisterViewController: UITextFieldDelegate {
     }
     
 }
+
 

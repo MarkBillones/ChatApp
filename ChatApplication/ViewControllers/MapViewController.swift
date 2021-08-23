@@ -9,22 +9,20 @@ import CoreLocation
 import MapKit
 import UIKit
 
-protocol ModalViewControllerDelegate {
-    
-    func sendValue(stringValue: String)
-    
-}
-
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
-    var delegate: ModalViewControllerDelegate!
+    var delegate: mapDataVCDelegate? = nil
+    
+    var countryTextHolder  = ""
+    var zipCodeTextHolder  = ""
+    var cityTextHolder     = ""
+    var provinceTextHolder = ""
     
     var previousLocation: CLLocation?
-    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000 //adjust the default zoom in here, with meters
     
@@ -87,11 +85,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let postal = placemark.postalCode ?? "Postal"
             let country = placemark.country ?? "Country"
             let city = placemark.locality ?? "City"
-            let streetName = placemark.thoroughfare ?? "eg. Salapan St."
-            let placeName = placemark.name ?? "eg. Apple"
+            let streetName = placemark.thoroughfare ?? "No current St."
+            let province = placemark.subAdministrativeArea ?? "Province"
+            let placeName = placemark.name ?? "" //stablishment Name
             
             DispatchQueue.main.async {
-                self.locationLabel.text = "\(placeName), \(streetName) \(city) \(country), \(postal)"
+                self.locationLabel.text = "\(placeName), \(streetName) \(city), \(province), \(country), \(postal)"
+                
+                self.countryTextHolder  = country
+                self.zipCodeTextHolder  = postal
+                self.cityTextHolder     = city
+                self.provinceTextHolder = province
             }
         }
     }
@@ -107,10 +111,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBAction func currentLocationTapped() {
         
-        
-        self.delegate?.sendValue(stringValue: "I sent a value, finally!")
-        dismiss(animated: true, completion: nil)
-        
+        if self.delegate != nil {
+            
+            let countryTextResult = countryTextHolder
+            let zipCodeTextResult = zipCodeTextHolder
+            let cityTextResult = cityTextHolder
+            let provinceTextResult = provinceTextHolder
+            
+            self.delegate?.sendValue(countryText: countryTextResult,
+                                     zipCodeText: zipCodeTextResult,
+                                     cityText: cityTextResult,
+                                     provinceText: provinceTextResult)
+            
+            navigationController?.popViewController(animated: true)
+        }
     }
-    
 }
+

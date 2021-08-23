@@ -16,14 +16,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    @IBAction func buttonTapped(_ sender: Any) {
-        
-    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

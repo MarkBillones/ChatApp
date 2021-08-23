@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol dataDelegate {
-    func getString(string: String)
+protocol mapDataVCDelegate {
+    
+    func sendValue(countryText: String, zipCodeText: String, cityText: String, provinceText: String)
+    
 }
