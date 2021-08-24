@@ -194,6 +194,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="zgM-nL-dTs" id="IvT-12-DoW"/>
                                             <outlet property="mealsDescriptionLabel" destination="vrd-GY-5KX" id="ZlJ-RN-Sqs"/>
+                                            <outlet property="shareButton" destination="f40-7M-J7u" id="cSF-mg-812"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -245,6 +246,9 @@
                                                 <state key="normal" title="See All" image="chevron.right" catalog="system">
                                                     <color key="titleColor" red="0.37625098229999998" green="0.72423267359999999" blue="0.1242280528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="seeAllButtonTapped:" destination="TvQ-Ho-eFC" eventType="touchUpInside" id="Xl0-qG-yhV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -264,8 +268,8 @@
                                     <constraint firstItem="Aw6-nZ-1Np" firstAttribute="leading" secondItem="bQO-Ys-2Ck" secondAttribute="leading" id="yj5-Vb-4Wv"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="02b-4N-lOn">
-                                <rect key="frame" x="20" y="249" width="374" height="55"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="02b-4N-lOn">
+                                <rect key="frame" x="20" y="237" width="374" height="55"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="fkq-wO-vIx"/>
@@ -277,7 +281,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MealsCollectionViewCell" id="CGP-E2-Zdg" customClass="MealsCollectionViewCell" customModule="ChatApplication" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="CGP-E2-Zdg" customClass="CategoryCollectionViewCell" customModule="ChatApplication" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="3" width="123" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MOb-hF-PjU">
@@ -293,6 +297,9 @@
                                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="btnTry:" destination="TvQ-Ho-eFC" eventType="touchUpInside" id="yNl-yJ-oTe"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -313,13 +320,13 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="123" height="49"/>
                                         <connections>
-                                            <outlet property="categoryButton" destination="H1c-Kd-GPw" id="tvi-DQ-yd1"/>
+                                            <outlet property="categriesButton" destination="H1c-Kd-GPw" id="SSI-63-EQu"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="TvQ-Ho-eFC" id="fQk-Oa-ha3"/>
-                                    <outlet property="delegate" destination="TvQ-Ho-eFC" id="3gr-2D-vwI"/>
+                                    <outlet property="dataSource" destination="TvQ-Ho-eFC" id="A5N-cF-VHx"/>
+                                    <outlet property="delegate" destination="TvQ-Ho-eFC" id="HOm-wx-O8w"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -362,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R5-za-T3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3684.057971014493" y="799.55357142857144"/>
+            <point key="canvasLocation" x="2022" y="1450"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="t82-RE-KTE">

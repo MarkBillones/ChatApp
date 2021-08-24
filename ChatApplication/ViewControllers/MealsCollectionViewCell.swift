@@ -9,9 +9,9 @@ import UIKit
 
 class MealsCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var mealsDescriptionLabel: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
     
     static let mealsCellIdentifier = "MealsCollectionViewCell"
     

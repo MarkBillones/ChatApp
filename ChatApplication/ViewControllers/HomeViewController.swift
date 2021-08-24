@@ -19,8 +19,6 @@ struct ByCategory: Codable {
 
 class HomeViewController: UIViewController, UISearchBarDelegate {
     
-    //        "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood"
-    
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: UICollectionView!
     
@@ -79,6 +77,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         task.resume()
     }
     
+    @IBAction func btnTry(_ sender: UIButton) {
+        sender.backgroundColor = sender.backgroundColor == UIColor.red ? UIColor.black : UIColor.green
+    }
+    
+    @IBAction func seeAllButtonTapped(_ sender: Any) {
+        
+    }
+    
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -87,8 +94,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.mealsCollectionView {
             return meals.count
         }
-        //row for the horizontal scroll
-        return 10
+        
+        if collectionView == categoryCollectionView {
+            return 10
+        }
+        
+        return 2
         
     }
     
@@ -109,14 +120,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.setLabels(lblString: lblString!)
             cell.configure(with: imageURLString)
             
+            cell.shareButton.softCornerButton(sizeCR: 5)
             cell.designCell()
             
             return cell
             
         } else {
             
-            let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealsCollectionViewCell", for: indexPath) as! MealsCollectionViewCell
+            let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             categoriesCell.designCellTwo()
+            categoriesCell.categriesButton.designButton()
             
             return categoriesCell
         }
@@ -132,11 +145,32 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: size, height: size + 50)
         }
         
-        let size = (collectionView.frame.size.width ) / 2
+        if collectionView == categoryCollectionView {
+            
+            let size = (collectionView.frame.size.width ) / 2
+            
+            return CGSize(width: size - 70, height: 50 ) //size = 187
+        }
         
-        return CGSize(width: size - 70, height: 50 ) //size = 187
+        return CGSize(width: 200, height: 50)
+        
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            print(#function)
+            
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == self.mealsCollectionView {
+            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+                print(#function)
+                cell.categriesButton.designButtonSelected()
+            }
+        }
+    }
 }
 
 extension UIView {
@@ -152,5 +186,27 @@ extension UIView {
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
         
+    }
+}
+
+extension UIButton {
+    
+    func designButton() {
+        
+        self.tintColor = .black
+        self.layer.cornerRadius = 10
+        self.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
+    func designButtonSelected() {
+        
+        self.tintColor = .white
+        self.layer.cornerRadius = 10
+        self.layer.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    }
+    
+    func softCornerButton(sizeCR: CGFloat) {
+        
+        self.layer.cornerRadius = sizeCR
     }
 }
