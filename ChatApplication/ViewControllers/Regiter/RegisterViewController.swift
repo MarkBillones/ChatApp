@@ -115,7 +115,7 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "getDataSegue" {
-            let secondVC: MapViewController = segue.destination as! MapViewController
+            let secondVC: RegisterMapViewController = segue.destination as! RegisterMapViewController
             secondVC.delegate = self
         }
     }

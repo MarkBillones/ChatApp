@@ -8,3 +8,5 @@
 import Foundation
 
 let searchByCategory = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
+
+let listOfCategory = "https://www.themealdb.com/api/json/v1/1/categories.php"

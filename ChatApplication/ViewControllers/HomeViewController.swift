@@ -7,31 +7,26 @@
 
 import UIKit
 
-struct APIResponse: Codable {
-    let meals: [ByCategory]
-}
-
-struct ByCategory: Codable {
-    let idMeal: String
-    let strMeal: String?
-    let strMealThumb: String
-}
-
 class HomeViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: UICollectionView!
     
     var meals: [ByCategory] = []
+    var categories: [CategoryList] = []
     var labelString = [ByCategory]()
+    var buttonString = [CategoryList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let icon1 = UITabBarItem(title: "Meals", image: .init(systemName: "square.grid.2x2"), selectedImage: .init(systemName: "square.grid.2x2.fill"))
+        
         self.tabBarItem = icon1
         
+        fetchListOfCategory()
         fetchPhotos(query: "Beef")
+        categoryCollectionView.reloadData()
         
     }
     
@@ -48,10 +43,40 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    func fetchListOfCategory() {
+        
+        let referenceURLForList = "\(listOfCategory)"
+        
+        guard let url = URL(string: referenceURLForList) else {
+            return
+        }
+        //read the url
+        URLSession.shared.dataTask(with: url) {[weak self] data, _, error in
+            guard let datas = data, error == nil else {
+                print("error in URLSession")
+                return
+            }
+            
+            do {
+                let jsonResults = try JSONDecoder().decode(CategoriesAPIResponse.self, from: datas)
+                //print("List of categories: \(jsonResults.categories.first?.strCategory)") // to check if i can get result when using that url
+                print("how many results: \(jsonResults.categories.count)")
+                
+                DispatchQueue.main.async {
+                    self?.categories = jsonResults.categories
+                    self?.categoryCollectionView.reloadData()
+                }
+
+            }catch {
+                print("Error!")
+            }
+        }.resume()
+    }
+    
     func fetchPhotos(query: String) {
-        
+
         let referenceURL = "\(searchByCategory)\(query)"
-        
+
         guard let url = URL(string: referenceURL) else {
             return
         }
@@ -60,16 +85,16 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
             guard let data = data, error == nil else {
                 return
             }
-            
+
             do {
-                let jsonResult = try JSONDecoder().decode(APIResponse.self, from: data)
+                let jsonResult = try JSONDecoder().decode(MealsAPIResponse.self, from: data)
                 //print("\(jsonResult.meals.first?.strMeal)") // to check if i can get result when using that url
-                print("\(jsonResult.meals.count)")
+                print("count of meals: \(jsonResult.meals.count)")
                 DispatchQueue.main.async {
                     self?.meals = jsonResult.meals
                     self?.mealsCollectionView.reloadData()
                 }
-                
+
             }catch {
                 print("Error!")
             }
@@ -77,10 +102,25 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         task.resume()
     }
     
-    @IBAction func btnTry(_ sender: UIButton) {
-        sender.backgroundColor = sender.backgroundColor == UIColor.red ? UIColor.black : UIColor.green
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        
+        
+        sender.backgroundColor = sender.backgroundColor == UIColor.green ? UIColor.green : UIColor.white
+        
+        if let buttonTitle = sender.title(for: .normal) {
+            print(buttonTitle)
+            
+            meals = [] //empty the meals array
+            mealsCollectionView?.reloadData()
+            sender.backgroundColor = UIColor.green
+            fetchPhotos(query: buttonTitle)
+            
+          }
+
     }
     
+    
+    // TODO: see all
     @IBAction func seeAllButtonTapped(_ sender: Any) {
         
     }
@@ -96,7 +136,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         if collectionView == categoryCollectionView {
-            return 10
+            return categories.count
         }
         
         return 2
@@ -127,9 +167,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         } else {
             
-            let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+            let categoryString = categories[indexPath.row].strCategory
+            
+            guard
+                let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell
+            else {
+                return UICollectionViewCell()
+                
+            }
+            
             categoriesCell.designCellTwo()
             categoriesCell.categriesButton.designButton()
+            
+            categoriesCell.setButtonLabels(lblString: categoryString!)
             
             return categoriesCell
         }
@@ -157,13 +207,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             print(#function)
-            
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
         if collectionView == self.mealsCollectionView {
             if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
                 print(#function)

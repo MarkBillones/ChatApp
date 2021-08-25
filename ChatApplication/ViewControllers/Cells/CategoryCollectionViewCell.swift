@@ -11,7 +11,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categriesButton: UIButton!
     
-    static let mealsCellIdentifier = "CategoryCollectionViewCell"
+    static let identifier = "CategoryCollectionViewCell"
     
-    
+    func setButtonLabels(lblString: String){
+        
+        categriesButton.setTitle(lblString, for: .normal)
+    }
 }

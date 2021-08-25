@@ -8,19 +8,21 @@
 import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
-
+    
     override func viewDidLoad() {
-            super.viewDidLoad()
-            
+        super.viewDidLoad()
+        
         view.layer.backgroundColor = UIColor.white.cgColor
         delegate = self
         
         guard
-            let home = storyboard?.instantiateViewController(identifier: "HomeNavigationVC")
+            let home = storyboard?.instantiateViewController(identifier: "HomeNavigationVC"),
+            let chats = storyboard?.instantiateViewController(identifier: "ChatsNavigationVC"),
+            let maps = storyboard?.instantiateViewController(identifier: "MapsNavigationVC"),
+            let settings = storyboard?.instantiateViewController(identifier: "SettingsNavigationVC")
         else { return}
         
-        let controllers = [home]  //array of the root view controllers displayed by the tab bar interface
-        self.viewControllers = controllers
+        self.setViewControllers([home, chats, maps, settings], animated: false) //array of the root view controllers displayed by the tab bar interface
         
     }
     
@@ -29,5 +31,5 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         print("Should select viewController: \(viewController.title ?? "") ?")
         return true;
     }
-
+    
 }
