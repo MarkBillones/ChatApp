@@ -14,6 +14,8 @@
 		5B5FB15D26D140E4005A9805 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5FB15C26D140E4005A9805 /* Protocol.swift */; };
 		5B6D913326CCDD8E00963712 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D913226CCDD8E00963712 /* GoogleService-Info.plist */; };
 		5B6D913526CD029600963712 /* RegisterMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D913426CD029600963712 /* RegisterMapViewController.swift */; };
+		5B86E09026D69FEE00D1E4B8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86E08F26D69FEE00D1E4B8 /* DetailsViewController.swift */; };
+		5B86E09226D6A02700D1E4B8 /* AllCategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */; };
 		5B89BCB126D3664200EC0084 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89BCB026D3664200EC0084 /* TabBarViewController.swift */; };
 		5BAAB8C926D63A9600DA796D /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */; };
 		5BAAB8CB26D63AA500DA796D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */; };
@@ -40,6 +42,8 @@
 		5B5FB15C26D140E4005A9805 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		5B6D913226CCDD8E00963712 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B6D913426CD029600963712 /* RegisterMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMapViewController.swift; sourceTree = "<group>"; };
+		5B86E08F26D69FEE00D1E4B8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategorieViewController.swift; sourceTree = "<group>"; };
 		5B89BCB026D3664200EC0084 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				5BC65B9F26CB933A00EB75FA /* LoginViewController.swift */,
 				5BAAB8CF26D64A7500DA796D /* Regiter */,
 				5BC65BA126CB936C00EB75FA /* HomeViewController.swift */,
+				5B86E08F26D69FEE00D1E4B8 /* DetailsViewController.swift */,
+				5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */,
 				5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */,
 				5BAAB8CD26D6478100DA796D /* MapsViewController.swift */,
 				5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */,
@@ -139,11 +145,11 @@
 			children = (
 				5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */,
 				5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */,
+				5BC65B8C26CB8FC000EB75FA /* Main.storyboard */,
 				5BC65BA326CB9C0000EB75FA /* Helpers */,
 				5BAAB8CC26D63AE500DA796D /* ViewControllers */,
 				5B5D08A826D4C585005C7349 /* TabBarViewController */,
 				5B5FB15E26D14889005A9805 /* Networking */,
-				5BC65B8C26CB8FC000EB75FA /* Main.storyboard */,
 				5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */,
 				5BC65B8F26CB8FC100EB75FA /* Assets.xcassets */,
 				5BC65B9426CB8FC100EB75FA /* Info.plist */,
@@ -314,7 +320,9 @@
 				5BAAB8CE26D6478100DA796D /* MapsViewController.swift in Sources */,
 				5B89BCB126D3664200EC0084 /* TabBarViewController.swift in Sources */,
 				5B5FB15D26D140E4005A9805 /* Protocol.swift in Sources */,
+				5B86E09226D6A02700D1E4B8 /* AllCategorieViewController.swift in Sources */,
 				5BC65B9E26CB932900EB75FA /* RegisterViewController.swift in Sources */,
+				5B86E09026D69FEE00D1E4B8 /* DetailsViewController.swift in Sources */,
 				5BAAB8CB26D63AA500DA796D /* SettingsViewController.swift in Sources */,
 				5B5D08A726D499FD005C7349 /* APIModels.swift in Sources */,
 				5B5FB15B26D0C7B7005A9805 /* MealsCollectionViewCell.swift in Sources */,

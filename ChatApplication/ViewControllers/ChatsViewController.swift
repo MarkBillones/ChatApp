@@ -11,11 +11,22 @@ class ChatsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let icon2 = UITabBarItem(title: "Chats", image: .init(systemName: "message"), selectedImage: .init(systemName: "message.fill"))
         
-        self.tabBarItem = icon2
     }
     
-
 }
+
+//extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//
+//        return cell
+//    }
+//
+//
+//}

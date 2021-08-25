@@ -20,10 +20,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let icon1 = UITabBarItem(title: "Meals", image: .init(systemName: "square.grid.2x2"), selectedImage: .init(systemName: "square.grid.2x2.fill"))
-        
-        self.tabBarItem = icon1
-        
+        tabBarItemsConfiguration()
         fetchListOfCategory()
         fetchPhotos(query: "Beef")
         categoryCollectionView.reloadData()
@@ -102,10 +99,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         task.resume()
     }
     
+    fileprivate func tabBarItemsConfiguration() {
+        let icon1 = UITabBarItem(title: "Meals", image: .init(systemName: "square.grid.2x2"), selectedImage: .init(systemName: "square.grid.2x2.fill"))
+        self.tabBarItem = icon1
+    }
+    
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         
-        sender.backgroundColor = sender.backgroundColor == UIColor.green ? UIColor.green : UIColor.white
+//        sender.backgroundColor = sender.backgroundColor == UIColor.green ? UIColor.green : UIColor.white
         
         if let buttonTitle = sender.title(for: .normal) {
             print(buttonTitle)
@@ -208,7 +210,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? MealsCollectionViewCell {
+            print(indexPath.row)
             print(#function)
         }
     }

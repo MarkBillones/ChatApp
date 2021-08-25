@@ -22,6 +22,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             let settings = storyboard?.instantiateViewController(identifier: "SettingsNavigationVC")
         else { return}
         
+        
+        home.title = "Meals"
+        chats.title = "Chats"
+        maps.title = "Maps"
+        settings.title = "Settings"
+        
+        chats.tabBarItem.image = UIImage(systemName: "message")
+        maps.tabBarItem.image = UIImage(systemName: "map")
+        settings.tabBarItem.image = UIImage(systemName: "gear")
+        
         self.setViewControllers([home, chats, maps, settings], animated: false) //array of the root view controllers displayed by the tab bar interface
         
     }

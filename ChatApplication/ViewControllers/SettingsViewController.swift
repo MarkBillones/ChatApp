@@ -6,27 +6,31 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let icon4 = UITabBarItem(title: "Settings", image: .init(systemName: "gearshape"), selectedImage: .init(systemName: "gearshape.fill"))
-        
-        self.tabBarItem = icon4
         
     }
     
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        
+        let auth = Auth.auth()
+        
+        do
+        {
+            try auth.signOut()
+            let mainViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.rootNavigationController) //as? HomeViewController
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            self.view.window?.rootViewController = mainViewController
+            self.view.window?.makeKeyAndVisible()
+            
+        }
+        catch {
+            print("error in Logout")
+        }
     }
-    */
-
+    
 }

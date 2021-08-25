@@ -195,6 +195,7 @@
                                             <outlet property="imageView" destination="zgM-nL-dTs" id="IvT-12-DoW"/>
                                             <outlet property="mealsDescriptionLabel" destination="vrd-GY-5KX" id="ZlJ-RN-Sqs"/>
                                             <outlet property="shareButton" destination="f40-7M-J7u" id="cSF-mg-812"/>
+                                            <segue destination="C7B-xa-U42" kind="show" id="C7L-4H-vqh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -386,14 +387,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujm-EJ-BRp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujm-EJ-BRp">
                                 <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0L-ZM-pkN">
+                                        <rect key="frame" x="96" y="49" width="48" height="30"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="mz8-Yj-dS8" eventType="touchUpInside" id="dN1-eA-pQy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstItem="E0L-ZM-pkN" firstAttribute="centerY" secondItem="ujm-EJ-BRp" secondAttribute="centerY" id="NY2-Vu-Hc5"/>
+                                    <constraint firstItem="E0L-ZM-pkN" firstAttribute="centerX" secondItem="ujm-EJ-BRp" secondAttribute="centerX" id="OaP-Ga-fao"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bes-bj-dxG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ujm-EJ-BRp" firstAttribute="centerX" secondItem="1kU-v5-loF" secondAttribute="centerX" id="1jk-Q5-o4F"/>
+                            <constraint firstItem="ujm-EJ-BRp" firstAttribute="top" secondItem="bes-bj-dxG" secondAttribute="top" constant="296" id="TmK-Pq-g6V"/>
+                            <constraint firstItem="ujm-EJ-BRp" firstAttribute="leading" secondItem="bes-bj-dxG" secondAttribute="leading" constant="87" id="k4e-Q3-AdM"/>
+                            <constraint firstItem="ujm-EJ-BRp" firstAttribute="centerY" secondItem="1kU-v5-loF" secondAttribute="centerY" id="rsc-dV-hEm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ks2-BS-mtm"/>
                 </viewController>
@@ -424,26 +445,66 @@
             </objects>
             <point key="canvasLocation" x="3648" y="800"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="mu6-Fg-esX">
             <objects>
-                <viewController id="C7B-xa-U42" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Oy8-Jv-O1l">
+                <viewController id="C7B-xa-U42" customClass="DetailsViewController" customModule="ChatApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ll7-Wk-eZk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="NW4-2E-AV4"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="446" id="faW-XM-LCP">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="446"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="faW-XM-LCP" id="2gt-G2-6vJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2z-7Z-ctv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="255"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmT-Az-KrF">
+                                            <rect key="frame" x="186" y="311" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLg-HT-1wJ">
+                                            <rect key="frame" x="186" y="282" width="43" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ziQ-m2-1ym">
+                                <rect key="frame" x="0.0" y="470.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ziQ-m2-1ym" id="cb4-En-z3c">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <navigationItem key="navigationItem" id="SrF-9m-fhS"/>
+                    <connections>
+                        <outlet property="detailsTable" destination="Ll7-Wk-eZk" id="utD-0h-VVy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R5-za-T3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022" y="1450"/>
+            <point key="canvasLocation" x="2021.7391304347827" y="1449.7767857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--All Categorie View Controller-->
         <scene sceneID="CTh-ez-CKx">
             <objects>
-                <viewController id="Why-s9-M3p" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllCategorieViewController" id="Why-s9-M3p" customClass="AllCategorieViewController" customModule="ChatApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dfb-v3-Nzl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1150,7 +1211,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tiX-Cb-eJf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PaA-Bb-6m6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="PaA-Bb-6m6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cR5-zr-G1C">
