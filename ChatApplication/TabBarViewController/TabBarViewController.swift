@@ -13,26 +13,30 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         view.layer.backgroundColor = UIColor.white.cgColor
+        tabBar.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
         delegate = self
         
         guard
             let home = storyboard?.instantiateViewController(identifier: "HomeNavigationVC"),
             let chats = storyboard?.instantiateViewController(identifier: "ChatsNavigationVC"),
             let maps = storyboard?.instantiateViewController(identifier: "MapsNavigationVC"),
-            let settings = storyboard?.instantiateViewController(identifier: "SettingsNavigationVC")
+            let accounts = storyboard?.instantiateViewController(identifier: "AccountNavigationVC")
         else { return}
-        
         
         home.title = "Meals"
         chats.title = "Chats"
         maps.title = "Maps"
-        settings.title = "Settings"
+        accounts.title = "Account"
         
         chats.tabBarItem.image = UIImage(systemName: "message")
         maps.tabBarItem.image = UIImage(systemName: "map")
-        settings.tabBarItem.image = UIImage(systemName: "gear")
+        accounts.tabBarItem.image = UIImage(systemName: "person.circle")
+        chats.tabBarItem.selectedImage = UIImage(systemName: "message.fill")
+        maps.tabBarItem.selectedImage = UIImage(systemName: "map.fill")
+        accounts.tabBarItem.selectedImage = UIImage(systemName: "person.circle.fill")
         
-        self.setViewControllers([home, chats, maps, settings], animated: false) //array of the root view controllers displayed by the tab bar interface
+        self.setViewControllers([home, chats, maps, accounts], animated: false) //array of the root view controllers displayed by the tab bar interface
         
     }
     

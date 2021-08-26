@@ -122,14 +122,6 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
     
     @IBAction func currentLocationTapped() {
         
-        //this will be used when not using Segue
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let mapVC = storyboard.instantiateViewController(identifier: "MapViewController")
-//
-//        mapVC.modalPresentationStyle = .fullScreen
-//        mapVC.modalTransitionStyle = .crossDissolve
-//        present(mapVC, animated: true, completion: nil)
-        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {

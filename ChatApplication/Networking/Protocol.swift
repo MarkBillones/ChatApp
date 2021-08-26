@@ -8,7 +8,10 @@
 import Foundation
 
 protocol mapDataVCDelegate {
-    
     func sendValue(countryText: String, zipCodeText: String, cityText: String, provinceText: String)
-    
 }
+
+protocol mealsDataDelegate {
+    func sendValue(photoID: String)
+}
+

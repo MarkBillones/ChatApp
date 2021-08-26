@@ -12,10 +12,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: UICollectionView!
     
-    var meals: [ByCategory] = []
-    var categories: [CategoryList] = []
-    var labelString = [ByCategory]()
-    var buttonString = [CategoryList]()
+    var delegate: mealsDataDelegate? = nil
+    
+    private var meals: [ByCategory] = []
+    private var categories: [CategoryList] = []
+    private var labelString = [ByCategory]()
+    private var buttonString = [CategoryList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +29,23 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        searchBar.resignFirstResponder()
-        
-        if let text = searchBar.text {
-            
-            meals = [] //empty the meals array
-            mealsCollectionView?.reloadData()
-            fetchPhotos(query: text)
-            
+        guard segue.identifier == "segueToDetails" else {
+            return
         }
+        
+        let detailsVC = segue.destination as! DetailsViewController
+        
+        guard let selectedIndexPaths = mealsCollectionView.indexPathsForSelectedItems,
+              let selectedIndexPath = selectedIndexPaths.first else {
+            return
+        }
+        
+        let meal = meals[selectedIndexPath.row]
+        detailsVC.mealId = meal.idMeal
+        detailsVC.mealName = meal.strMeal
+        detailsVC.mealImageString = meal.strMealThumb
     }
     
     func fetchListOfCategory() {
@@ -99,6 +107,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         task.resume()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+        if let text = searchBar.text {
+            
+            meals = [] //empty the meals array
+            mealsCollectionView?.reloadData()
+            fetchPhotos(query: text)
+            
+        }
+    }
+    
     fileprivate func tabBarItemsConfiguration() {
         let icon1 = UITabBarItem(title: "Meals", image: .init(systemName: "square.grid.2x2"), selectedImage: .init(systemName: "square.grid.2x2.fill"))
         self.tabBarItem = icon1
@@ -107,12 +128,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         
-//        sender.backgroundColor = sender.backgroundColor == UIColor.green ? UIColor.green : UIColor.white
-        
         if let buttonTitle = sender.title(for: .normal) {
             print(buttonTitle)
             
-            meals = [] //empty the meals array
+            meals = [] //empty the meals rarray
             mealsCollectionView?.reloadData()
             sender.backgroundColor = UIColor.green
             fetchPhotos(query: buttonTitle)
@@ -121,10 +140,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 
     }
     
-    
-    // TODO: see all
     @IBAction func seeAllButtonTapped(_ sender: Any) {
         
+        let viewController = storyboard?.instantiateViewController(identifier: "AllCategorieViewController") as! AllCategorieViewController
+        //the newer version of ios, the user can swipe down  your welcome flow
+        viewController.modalPresentationStyle = .automatic
+        present(viewController, animated: true)
     }
     
     
@@ -185,7 +206,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             return categoriesCell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

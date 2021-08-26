@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B48F22B26D73A42003B356B /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22A26D73A42003B356B /* ConversationViewController.swift */; };
+		5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22C26D754F6003B356B /* ChatModels.swift */; };
+		5B48F22F26D766BC003B356B /* AllCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */; };
 		5B5D08A326D49950005C7349 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D08A226D49950005C7349 /* APIKeys.swift */; };
 		5B5D08A726D499FD005C7349 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D08A626D499FD005C7349 /* APIModels.swift */; };
 		5B5D08AA26D50D50005C7349 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D08A926D50D50005C7349 /* CategoryCollectionViewCell.swift */; };
@@ -18,7 +21,7 @@
 		5B86E09226D6A02700D1E4B8 /* AllCategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */; };
 		5B89BCB126D3664200EC0084 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89BCB026D3664200EC0084 /* TabBarViewController.swift */; };
 		5BAAB8C926D63A9600DA796D /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */; };
-		5BAAB8CB26D63AA500DA796D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */; };
+		5BAAB8CB26D63AA500DA796D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8CA26D63AA500DA796D /* AccountViewController.swift */; };
 		5BAAB8CE26D6478100DA796D /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAB8CD26D6478100DA796D /* MapsViewController.swift */; };
 		5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */; };
 		5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B48F22A26D73A42003B356B /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		5B48F22C26D754F6003B356B /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
+		5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5D08A226D49950005C7349 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		5B5D08A626D499FD005C7349 /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		5B5D08A926D50D50005C7349 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -46,7 +52,7 @@
 		5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategorieViewController.swift; sourceTree = "<group>"; };
 		5B89BCB026D3664200EC0084 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5BAAB8CA26D63AA500DA796D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		5BAAB8CD26D6478100DA796D /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		5BC65B8326CB8FC000EB75FA /* ChatApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 				5B5FB15C26D140E4005A9805 /* Protocol.swift */,
 				5B5D08A226D49950005C7349 /* APIKeys.swift */,
 				5B5D08A626D499FD005C7349 /* APIModels.swift */,
+				5B48F22C26D754F6003B356B /* ChatModels.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -106,8 +113,9 @@
 				5B86E08F26D69FEE00D1E4B8 /* DetailsViewController.swift */,
 				5B86E09126D6A02700D1E4B8 /* AllCategorieViewController.swift */,
 				5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */,
+				5B48F22A26D73A42003B356B /* ConversationViewController.swift */,
 				5BAAB8CD26D6478100DA796D /* MapsViewController.swift */,
-				5BAAB8CA26D63AA500DA796D /* SettingsViewController.swift */,
+				5BAAB8CA26D63AA500DA796D /* AccountViewController.swift */,
 				5BC65B9C26CB92FF00EB75FA /* Cells */,
 			);
 			path = ViewControllers;
@@ -163,6 +171,7 @@
 			children = (
 				5B5FB15A26D0C7B7005A9805 /* MealsCollectionViewCell.swift */,
 				5B5D08A926D50D50005C7349 /* CategoryCollectionViewCell.swift */,
+				5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 				5BC65B8B26CB8FC000EB75FA /* MainViewController.swift in Sources */,
 				5B5D08AA26D50D50005C7349 /* CategoryCollectionViewCell.swift in Sources */,
 				5BAAB8C926D63A9600DA796D /* ChatsViewController.swift in Sources */,
+				5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */,
 				5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */,
 				5B5D08A326D49950005C7349 /* APIKeys.swift in Sources */,
 				5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */,
@@ -322,8 +332,10 @@
 				5B5FB15D26D140E4005A9805 /* Protocol.swift in Sources */,
 				5B86E09226D6A02700D1E4B8 /* AllCategorieViewController.swift in Sources */,
 				5BC65B9E26CB932900EB75FA /* RegisterViewController.swift in Sources */,
+				5B48F22B26D73A42003B356B /* ConversationViewController.swift in Sources */,
 				5B86E09026D69FEE00D1E4B8 /* DetailsViewController.swift in Sources */,
-				5BAAB8CB26D63AA500DA796D /* SettingsViewController.swift in Sources */,
+				5BAAB8CB26D63AA500DA796D /* AccountViewController.swift in Sources */,
+				5B48F22F26D766BC003B356B /* AllCategoriesCollectionViewCell.swift in Sources */,
 				5B5D08A726D499FD005C7349 /* APIModels.swift in Sources */,
 				5B5FB15B26D0C7B7005A9805 /* MealsCollectionViewCell.swift in Sources */,
 				5BC65BA726CB9C0000EB75FA /* Utilities.swift in Sources */,

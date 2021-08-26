@@ -25,4 +25,22 @@ struct CategoryList: Codable {
     let idCategory: String
     let strCategory: String?
     let strCategoryThumb: String
+    let strCategoryDescription: String
+}
+
+struct lookupAPIResponce: Codable {
+    let meals: [lookupID]
+}
+
+struct lookupID: Codable {
+//    let idMeal: String?
+//    let strMeal: string?
+    let strMealThumb: String
+    let strIngredient1: String
+    let strIngredient2: String
+    let strIngredient3: String
+    let strIngredient4: String
+    let strIngredient5: String
+    let strInstructions: String
+    
 }
