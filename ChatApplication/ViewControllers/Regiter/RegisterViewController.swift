@@ -147,7 +147,6 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let completeAddress = "\(houseAddressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(brgyTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(cityTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(provinceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(countryTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(zipCodeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))"
         
-        
         // Create the user
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
@@ -167,7 +166,8 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
                         self.showError(message: "Error saving user data")
                     }
                 }
-                
+                AppSettings.displayName = "\(firstName), \(lastName)"
+                AppSettings.currentEmail = email
                 // Make homeVC be the root controller, transition to Home
                 self.segueToHomeVC()
             }
