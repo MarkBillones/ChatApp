@@ -12,6 +12,6 @@ protocol mapDataVCDelegate {
 }
 
 protocol mealsDataDelegate {
-    func sendValue(photoID: String)
+    func sendValue(selectedCategory: String)
 }
 

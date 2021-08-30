@@ -7,12 +7,10 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UISearchBarDelegate {
+class HomeViewController: UIViewController, UISearchBarDelegate, mealsDataDelegate {
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: UICollectionView!
-    
-    var delegate: mealsDataDelegate? = nil
     
     private var meals: [ByCategory] = []
     private var categories: [CategoryList] = []
@@ -31,21 +29,35 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier == "segueToDetails" else {
-            return
+        if segue.identifier == "segueToDetails" {
+            
+            let detailsVC = segue.destination as! DetailsViewController
+            
+            guard let selectedIndexPaths = mealsCollectionView.indexPathsForSelectedItems,
+                  let selectedIndexPath = selectedIndexPaths.first else {
+                return
+            }
+            
+            let meal = meals[selectedIndexPath.row]
+            detailsVC.mealId = meal.idMeal
+            detailsVC.mealName = meal.strMeal
+            detailsVC.mealImageString = meal.strMealThumb
+            
         }
         
-        let detailsVC = segue.destination as! DetailsViewController
-        
-        guard let selectedIndexPaths = mealsCollectionView.indexPathsForSelectedItems,
-              let selectedIndexPath = selectedIndexPaths.first else {
-            return
+        if segue.identifier == "segueToAllCategories" {
+            let homeVC: AllCategorieViewController = segue.destination as! AllCategorieViewController
+            homeVC.delegate = self
         }
         
-        let meal = meals[selectedIndexPath.row]
-        detailsVC.mealId = meal.idMeal
-        detailsVC.mealName = meal.strMeal
-        detailsVC.mealImageString = meal.strMealThumb
+    }
+    //mealsData protocol
+    func sendValue(selectedCategory: String) {
+        
+        meals = [] //empty the meals array
+        mealsCollectionView?.reloadData()
+        fetchPhotos(query: selectedCategory)
+        print("this is delegate that is working\(selectedCategory)")
     }
     
     func fetchListOfCategory() {
@@ -141,11 +153,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func seeAllButtonTapped(_ sender: Any) {
-        
-        let viewController = storyboard?.instantiateViewController(identifier: "AllCategorieViewController") as! AllCategorieViewController
-        //the newer version of ios, the user can swipe down  your welcome flow
-        viewController.modalPresentationStyle = .automatic
-        present(viewController, animated: true)
+//        
     }
     
     
@@ -180,8 +188,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return UICollectionViewCell()
             }
             //access the configure function in the url
-            cell.setLabels(lblString: lblString!)
             cell.configure(with: imageURLString)
+            cell.setLabels(lblString: lblString!)
             
             cell.shareButton.softCornerButton(sizeCR: 5)
             cell.designCell()
@@ -230,21 +238,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? MealsCollectionViewCell {
+//        if let cell = collectionView.cellForItem(at: indexPath) as? MealsCollectionViewCell {
             print(indexPath.row)
             print(#function)
-        }
+//        }
     }
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-        if collectionView == self.mealsCollectionView {
-            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-                print(#function)
-                cell.categriesButton.designButtonSelected()
-            }
-        }
-    }
 }
 
 extension UIView {

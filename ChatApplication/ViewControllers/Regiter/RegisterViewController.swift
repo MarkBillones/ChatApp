@@ -25,7 +25,7 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +33,14 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
         configureTextFields()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "getDataSegue" {
+            let secondVC: RegisterMapViewController = segue.destination as! RegisterMapViewController
+            secondVC.delegate = self
+        }
+    }
+    
     //for the confomance of protocol mapData
     func sendValue(countryText: String, zipCodeText: String, cityText: String, provinceText: String) {
         
@@ -113,13 +121,6 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
         return nil
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "getDataSegue" {
-            let secondVC: RegisterMapViewController = segue.destination as! RegisterMapViewController
-            secondVC.delegate = self
-        }
-    }
-    
     @IBAction func currentLocationTapped() {
         
     }
@@ -134,39 +135,44 @@ class RegisterViewController: UIViewController, mapDataVCDelegate {
             showError(message: "\(error!)")
         }
         else {
+            signIn()
+        }
+    }
+    
+    func signIn() {
+        // Create cleaned versions of the data
+        let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let completeAddress = "\(houseAddressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(brgyTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(cityTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(provinceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(countryTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(zipCodeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))"
+        
+        
+        // Create the user
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
-            // Create cleaned versions of the data
-            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let completeAddress = "\(houseAddressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(brgyTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(cityTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(provinceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(countryTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)), \(zipCodeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))"
-            
-            
-            // Create the user
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error != nil {
                 
-                if error != nil {
+                self.showError(message: error!.localizedDescription)
+            }
+            else {
+                // User was created successfully, now store the first name and last namer
+                // Need to  pod install the Firebase/Firestore
+                let db = Firestore.firestore()
+                //need of collection users in data base, add document with fields of "firstname", "lastname", and  "uid"
+                db.collection("users").addDocument(data: ["address": completeAddress, "first_name":firstName, "last_name":lastName, "user_id": result!.user.uid ]) { (error) in
                     
-                    self.showError(message: error!.localizedDescription)
-                }
-                else {
-                    // User was created successfully, now store the first name and last namer
-                    // Need to  pod install the Firebase/Firestore
-                    let db = Firestore.firestore()
-                    //need of collection users in data base, add document with fields of "firstname", "lastname", and  "uid"
-                    db.collection("users").addDocument(data: ["address": completeAddress, "first_name":firstName, "last_name":lastName, "user_id": result!.user.uid ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.showError(message: "Error saving user data")
-                        }
+                    if error != nil {
+                        // Show error message
+                        self.showError(message: "Error saving user data")
                     }
-                    // Make homeVC be the root controller, transition to Home
-                    self.segueToHomeVC()
                 }
+                
+                // Make homeVC be the root controller, transition to Home
+                self.segueToHomeVC()
             }
         }
+        
     }
     
     func showError(message:String) {

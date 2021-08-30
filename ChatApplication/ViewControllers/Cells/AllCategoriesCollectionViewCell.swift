@@ -12,11 +12,14 @@ class AllCategoriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var categoriesDescriptionLabel: UILabel!
     
+    var cat: String = ""
+    
     static let categoriesCellIdentifier = "AllCategoriesCollectionViewCell"
     
     
     func setLabels(lblString: String){
         categoriesDescriptionLabel.text = lblString
+        cat = lblString
     }
     
     func configure(with urlString: String){

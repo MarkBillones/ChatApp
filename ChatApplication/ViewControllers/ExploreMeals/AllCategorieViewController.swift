@@ -11,6 +11,8 @@ class AllCategorieViewController: UIViewController {
     
     @IBOutlet weak var allCategoryCollectionView: UICollectionView!
     
+    var temp: String = ""
+    var delegate: mealsDataDelegate? = nil
     var categories: [CategoryList] = []
     var buttonString = [CategoryList]()
     
@@ -19,6 +21,7 @@ class AllCategorieViewController: UIViewController {
         
         fetchallCategory()
     }
+    
     
     func fetchallCategory() {
         
@@ -50,6 +53,14 @@ class AllCategorieViewController: UIViewController {
         }.resume()
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        
+        let selectedCategory = temp
+        
+        self.delegate?.sendValue(selectedCategory: selectedCategory)
+        // navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AllCategorieViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -73,6 +84,7 @@ extension AllCategorieViewController: UICollectionViewDelegate, UICollectionView
         //access the configure function in the url
         cell.setLabels(lblString: lblString!)
         cell.configure(with: imageURLString)
+        temp = cell.cat
         
         cell.designCell()
         
@@ -91,7 +103,12 @@ extension AllCategorieViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? MealsCollectionViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AllCategoriesCollectionViewCell {
+            
+            
+            let currentText = cell.categoriesDescriptionLabel.text
+            temp = currentText ?? "No Title"
+            print(temp)
             print(indexPath.row)
             print(#function)
         }

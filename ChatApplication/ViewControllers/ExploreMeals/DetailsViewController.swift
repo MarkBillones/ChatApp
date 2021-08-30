@@ -7,6 +7,23 @@
 
 import UIKit
 
+//model with properties for the collapsable table view
+class Section {
+    let title: String
+    let detailText: String
+    let options: [String]
+    var isOpened = false
+    
+    //initializer
+    init(title: String, detailsText: String, options: [String], isOpened: Bool = false){
+        //constructors
+        self.title = title
+        self.detailText = detailsText
+        self.options = options
+        self.isOpened = isOpened
+    }
+}
+
 class DetailsViewController: UIViewController{
 
     @IBOutlet var detailsTable: UITableView!
@@ -18,9 +35,16 @@ class DetailsViewController: UIViewController{
     var mealImageString: String!
     
     private var meals: [lookupID] = []
+    private var sections = [Section]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sections = [
+            Section(title: "Ingredients", detailsText: "Hide Details", options: [1,2,3].compactMap({return "Cell \($0)"})),
+            Section(title: "Instructions", detailsText: "Hide Details", options: [1,2].compactMap({return "Cell \($0)"})),
+            Section(title: "Sction 3", detailsText: "Hide Details", options: [1,2,3].compactMap({return "Cell \($0)"}))
+        ]
         
         configure(mealQueryID: mealId)
         configureImgage(mealQueryID: mealImageString)
@@ -53,7 +77,7 @@ class DetailsViewController: UIViewController{
 
             do {
                 let jsonResult = try JSONDecoder().decode(lookupAPIResponce.self, from: data)
-                //print("\(jsonResult.meals.first?.strMeal)") // to check if i can get result when using that url
+                print("\(String(describing: jsonResult.meals.first))") // to check if i can get result when using that url
                 print("count of search by ID: \(jsonResult.meals.count)")
                 DispatchQueue.main.async {
                     
@@ -92,17 +116,52 @@ class DetailsViewController: UIViewController{
 
 extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        tableView.numberOfSections
-        return 15
+        let section = sections[section]
+        
+        if section.isOpened {
+            return section.options.count
+        }
+        else {
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Ingredients"
-        cell.detailTextLabel?.text = "Measurements"
+        
+        if indexPath.row == 0 {
+            
+            cell.textLabel?.text = sections[indexPath.section].title
+            cell.detailTextLabel?.text = sections[indexPath.section].detailText
+            cell.detailTextLabel?.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            
+        }
+        else {
+            
+            cell.textLabel?.text = sections[indexPath.section].options[indexPath.row - 1]
+            
+        }
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        //if index 0 is tapped in section it will collapse
+            if indexPath.row == 0 {
+                //expandable happens here, when tapped, revert the current bool
+                sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
+                tableView.reloadSections([indexPath.section], with: .none)
+            }
+        else {
+            print("sub cell is tapped")
+        }
     }
 }

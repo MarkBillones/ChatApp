@@ -33,7 +33,7 @@ final class AccountViewController: UIViewController {
                                      title: "Name: \(UserDefaults.standard.value(forKey:"name") as? String ?? "Mark Allen Billones")",
                                      handler: nil))
         data.append(ProfileViewModel(viewModelType: .info,
-                                     title: "Email: \(UserDefaults.standard.value(forKey:"email") as? String ?? "No Email")",
+                                     title: "Email: \(AppSettings.currentEmail as? String ?? "No Email")",
                                      handler: nil))
         data.append(ProfileViewModel(viewModelType: .logout, title: "Log Out", handler: { [weak self] in
             

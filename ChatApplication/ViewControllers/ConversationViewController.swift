@@ -17,20 +17,17 @@ class ConversationViewController: MessagesViewController, MessagesDataSource, Me
     
     var messages = [MessageType]()
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sampleLastMessages()
-        
-        
+        removeMessageAvatars()
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
     }
+    
     
     fileprivate func sampleLastMessages() {
         messages.append(Message(sender: currentUser,
@@ -59,6 +56,32 @@ class ConversationViewController: MessagesViewController, MessagesDataSource, Me
                                 sentDate: Date().addingTimeInterval(-30000),
                                 kind: .text("ok then good bye")))
     }
+    
+    private func removeMessageAvatars() {  // 7. Removes the blank space left for each hidden avatar and adjusts the inset of the top label above each message.
+      
+      guard
+        let layout = messagesCollectionView.collectionViewLayout
+          as? MessagesCollectionViewFlowLayout
+      else {
+        return
+      }
+      
+      layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+      layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+      layout.setMessageIncomingAvatarSize(.zero)
+      layout.setMessageOutgoingAvatarSize(.zero)
+      
+      let incomingLabelAlignment = LabelAlignment(
+        textAlignment: .left,
+        textInsets: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
+      layout.setMessageIncomingMessageTopLabelAlignment(incomingLabelAlignment)
+      
+      let outgoingLabelAlignment = LabelAlignment(
+        textAlignment: .right,
+        textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15))
+      layout.setMessageOutgoingMessageTopLabelAlignment(outgoingLabelAlignment)
+    }
+    
     func currentSender() -> SenderType {
     return currentUser
     }
@@ -69,6 +92,10 @@ class ConversationViewController: MessagesViewController, MessagesDataSource, Me
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.isHidden = true
     }
     
 }

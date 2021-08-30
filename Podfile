@@ -10,6 +10,7 @@ target 'ChatApplication' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   #pod 'Kingfisher'
   pod 'MessageKit'

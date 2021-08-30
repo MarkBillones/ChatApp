@@ -33,8 +33,6 @@ struct lookupAPIResponce: Codable {
 }
 
 struct lookupID: Codable {
-//    let idMeal: String?
-//    let strMeal: string?
     let strMealThumb: String
     let strIngredient1: String
     let strIngredient2: String

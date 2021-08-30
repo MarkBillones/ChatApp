@@ -66,14 +66,38 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func showMissingEmailAlert() {
+        let alertController = UIAlertController(
+            title: "Email Required",
+            message: "Please enter a your email.",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(
+            title: "Okay",
+            style: .default) { _ in
+            self.emailTextField.becomeFirstResponder()
+        }
+        alertController.addAction(action)
+        present(alertController, animated: true)
+    }
+    
     @IBAction func logInButtonTapped(_ sender: Any) {
         
         // Create cleaned versions of the text field
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        guard
+          let defaultEmail = emailTextField.text,
+          !defaultEmail.isEmpty
+        else {
+          showMissingEmailAlert()
+          return
+        }
+        
+        emailTextField.resignFirstResponder()
         // Signing in the user
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             
             if error != nil {
                 // Couldn't sign in
@@ -81,6 +105,9 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else {
+                
+                UserDefaults.standard.set(email, forKey: "email")
+                AppSettings.currentEmail = defaultEmail
                 // programmatically  segue to home
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController) //as? HomeViewController
                 
