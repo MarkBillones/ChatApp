@@ -26,7 +26,9 @@ class MainViewController: UIViewController {
 
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser != nil {
-             
+            
+            AppSettings.displayName = "MARK" //seting user defaults using text in text field
+            
             let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController) //as? HomeViewController
             
             self.view.window?.rootViewController = homeViewController

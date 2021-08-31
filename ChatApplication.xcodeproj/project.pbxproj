@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B3144F626DE341000BB5260 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F526DE341000BB5260 /* AppController.swift */; };
+		5B3144F826DE424000BB5260 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F726DE424000BB5260 /* Channel.swift */; };
+		5B3144FA26DE436A00BB5260 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */; };
 		5B48F22B26D73A42003B356B /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22A26D73A42003B356B /* ConversationViewController.swift */; };
 		5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22C26D754F6003B356B /* ChatModels.swift */; };
 		5B48F22F26D766BC003B356B /* AllCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B3144F526DE341000BB5260 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		5B3144F726DE424000BB5260 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
 		5B48F22A26D73A42003B356B /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		5B48F22C26D754F6003B356B /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
 		5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 				5BAAB8CF26D64A7500DA796D /* Regiter */,
 				5B185DCA26DC61C9001BEABF /* ExploreMeals */,
 				5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */,
+				5B3144F726DE424000BB5260 /* Channel.swift */,
+				5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */,
 				5B48F22A26D73A42003B356B /* ConversationViewController.swift */,
 				5BAAB8CD26D6478100DA796D /* MapsViewController.swift */,
 				5BAAB8CA26D63AA500DA796D /* AccountViewController.swift */,
@@ -163,6 +171,7 @@
 			children = (
 				5BC65B8626CB8FC000EB75FA /* AppDelegate.swift */,
 				5B4C087726DA0A0500BA8CD4 /* AppSettings.swift */,
+				5B3144F526DE341000BB5260 /* AppController.swift */,
 				5BC65B8826CB8FC000EB75FA /* SceneDelegate.swift */,
 				5BC65B8C26CB8FC000EB75FA /* Main.storyboard */,
 				5BC65BA326CB9C0000EB75FA /* Helpers */,
@@ -331,6 +340,7 @@
 				5BC65B8B26CB8FC000EB75FA /* MainViewController.swift in Sources */,
 				5B5D08AA26D50D50005C7349 /* CategoryCollectionViewCell.swift in Sources */,
 				5BAAB8C926D63A9600DA796D /* ChatsViewController.swift in Sources */,
+				5B3144F826DE424000BB5260 /* Channel.swift in Sources */,
 				5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */,
 				5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */,
 				5B5D08A326D49950005C7349 /* APIKeys.swift in Sources */,
@@ -349,7 +359,9 @@
 				5BAAB8CB26D63AA500DA796D /* AccountViewController.swift in Sources */,
 				5B48F22F26D766BC003B356B /* AllCategoriesCollectionViewCell.swift in Sources */,
 				5B5D08A726D499FD005C7349 /* APIModels.swift in Sources */,
+				5B3144F626DE341000BB5260 /* AppController.swift in Sources */,
 				5B5FB15B26D0C7B7005A9805 /* MealsCollectionViewCell.swift in Sources */,
+				5B3144FA26DE436A00BB5260 /* DatabaseRepresentation.swift in Sources */,
 				5BC65BA726CB9C0000EB75FA /* Utilities.swift in Sources */,
 				5BC65BA226CB936C00EB75FA /* HomeViewController.swift in Sources */,
 			);
