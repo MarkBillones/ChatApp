@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>674416621339-amv7aht12f46sa37pdq2q4qinl73g5lh.apps.googleusercontent.com</string>
+	<string>778718792191-v0see6gepncbg96koq5kkmisvg5gmrnf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.674416621339-amv7aht12f46sa37pdq2q4qinl73g5lh</string>
+	<string>com.googleusercontent.apps.778718792191-v0see6gepncbg96koq5kkmisvg5gmrnf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCtWC7yVN0zS4HqlCWjIZh3vcFseUdIvBQ</string>
+	<string>AIzaSyB_jy167zu-nu1D1pMcHJWzj7E_FnkGy1o</string>
 	<key>GCM_SENDER_ID</key>
-	<string>674416621339</string>
+	<string>778718792191</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.iosTeam2021.ChatAppExercise</string>
+	<string>com.test.ChatAppRWR</string>
 	<key>PROJECT_ID</key>
-	<string>chatappexercise-283c5</string>
+	<string>chat-trial-911cd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>chatappexercise-283c5.appspot.com</string>
+	<string>chat-trial-911cd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:674416621339:ios:9d456f02ea56e66b5805be</string>
+	<string>1:778718792191:ios:cd1ca4fa2872ab34fcffca</string>
 </dict>
 </plist>

@@ -10,8 +10,15 @@
 		5B3144F626DE341000BB5260 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F526DE341000BB5260 /* AppController.swift */; };
 		5B3144F826DE424000BB5260 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F726DE424000BB5260 /* Channel.swift */; };
 		5B3144FA26DE436A00BB5260 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */; };
+		5B3144FF26DE497300BB5260 /* ImageMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144FB26DE497300BB5260 /* ImageMediaItem.swift */; };
+		5B31450026DE497300BB5260 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144FC26DE497300BB5260 /* ChatViewController.swift */; };
+		5B31450126DE497300BB5260 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144FD26DE497300BB5260 /* Message.swift */; };
+		5B31450226DE497300BB5260 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3144FE26DE497300BB5260 /* Sender.swift */; };
+		5B31450826DE4D4E00BB5260 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31450426DE4D4E00BB5260 /* UIImage+Additions.swift */; };
+		5B31450926DE4D4E00BB5260 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31450526DE4D4E00BB5260 /* UIView+Additions.swift */; };
+		5B31450A26DE4D4F00BB5260 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31450626DE4D4E00BB5260 /* UIColor+Additions.swift */; };
+		5B31450B26DE4D4F00BB5260 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31450726DE4D4E00BB5260 /* UICollectionView+Additions.swift */; };
 		5B48F22B26D73A42003B356B /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22A26D73A42003B356B /* ConversationViewController.swift */; };
-		5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22C26D754F6003B356B /* ChatModels.swift */; };
 		5B48F22F26D766BC003B356B /* AllCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */; };
 		5B4C087826DA0A0500BA8CD4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C087726DA0A0500BA8CD4 /* AppSettings.swift */; };
 		5B5D08A326D49950005C7349 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D08A226D49950005C7349 /* APIKeys.swift */; };
@@ -45,8 +52,15 @@
 		5B3144F526DE341000BB5260 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		5B3144F726DE424000BB5260 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		5B3144FB26DE497300BB5260 /* ImageMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMediaItem.swift; sourceTree = "<group>"; };
+		5B3144FC26DE497300BB5260 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5B3144FD26DE497300BB5260 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5B3144FE26DE497300BB5260 /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		5B31450426DE4D4E00BB5260 /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		5B31450526DE4D4E00BB5260 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		5B31450626DE4D4E00BB5260 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		5B31450726DE4D4E00BB5260 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		5B48F22A26D73A42003B356B /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		5B48F22C26D754F6003B356B /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
 		5B48F22E26D766BC003B356B /* AllCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B4C087726DA0A0500BA8CD4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		5B5D08A226D49950005C7349 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
@@ -102,6 +116,38 @@
 			path = ExploreMeals;
 			sourceTree = "<group>";
 		};
+		5B31450326DE4D2600BB5260 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B31450726DE4D4E00BB5260 /* UICollectionView+Additions.swift */,
+				5B31450626DE4D4E00BB5260 /* UIColor+Additions.swift */,
+				5B31450426DE4D4E00BB5260 /* UIImage+Additions.swift */,
+				5B31450526DE4D4E00BB5260 /* UIView+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B31450C26DE5BF900BB5260 /* MessagesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5B3144FC26DE497300BB5260 /* ChatViewController.swift */,
+				5B31450D26DE5C1F00BB5260 /* MessageModel */,
+			);
+			path = MessagesViewController;
+			sourceTree = "<group>";
+		};
+		5B31450D26DE5C1F00BB5260 /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B3144F726DE424000BB5260 /* Channel.swift */,
+				5B3144FB26DE497300BB5260 /* ImageMediaItem.swift */,
+				5B3144FD26DE497300BB5260 /* Message.swift */,
+				5B3144FE26DE497300BB5260 /* Sender.swift */,
+				5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */,
+			);
+			path = MessageModel;
+			sourceTree = "<group>";
+		};
 		5B5D08A826D4C585005C7349 /* TabBarViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +162,6 @@
 				5B5FB15C26D140E4005A9805 /* Protocol.swift */,
 				5B5D08A226D49950005C7349 /* APIKeys.swift */,
 				5B5D08A626D499FD005C7349 /* APIModels.swift */,
-				5B48F22C26D754F6003B356B /* ChatModels.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -129,8 +174,7 @@
 				5BAAB8CF26D64A7500DA796D /* Regiter */,
 				5B185DCA26DC61C9001BEABF /* ExploreMeals */,
 				5BAAB8C826D63A9600DA796D /* ChatsViewController.swift */,
-				5B3144F726DE424000BB5260 /* Channel.swift */,
-				5B3144F926DE436A00BB5260 /* DatabaseRepresentation.swift */,
+				5B31450C26DE5BF900BB5260 /* MessagesViewController */,
 				5B48F22A26D73A42003B356B /* ConversationViewController.swift */,
 				5BAAB8CD26D6478100DA796D /* MapsViewController.swift */,
 				5BAAB8CA26D63AA500DA796D /* AccountViewController.swift */,
@@ -176,6 +220,7 @@
 				5BC65B8C26CB8FC000EB75FA /* Main.storyboard */,
 				5BC65BA326CB9C0000EB75FA /* Helpers */,
 				5BAAB8CC26D63AE500DA796D /* ViewControllers */,
+				5B31450326DE4D2600BB5260 /* Extensions */,
 				5B5D08A826D4C585005C7349 /* TabBarViewController */,
 				5B5FB15E26D14889005A9805 /* Networking */,
 				5BC65B9126CB8FC100EB75FA /* LaunchScreen.storyboard */,
@@ -338,10 +383,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BC65B8B26CB8FC000EB75FA /* MainViewController.swift in Sources */,
+				5B3144FF26DE497300BB5260 /* ImageMediaItem.swift in Sources */,
 				5B5D08AA26D50D50005C7349 /* CategoryCollectionViewCell.swift in Sources */,
 				5BAAB8C926D63A9600DA796D /* ChatsViewController.swift in Sources */,
 				5B3144F826DE424000BB5260 /* Channel.swift in Sources */,
-				5B48F22D26D754F6003B356B /* ChatModels.swift in Sources */,
 				5BC65B8726CB8FC000EB75FA /* AppDelegate.swift in Sources */,
 				5B5D08A326D49950005C7349 /* APIKeys.swift in Sources */,
 				5BC65B8926CB8FC000EB75FA /* SceneDelegate.swift in Sources */,
@@ -351,6 +396,7 @@
 				5BAAB8CE26D6478100DA796D /* MapsViewController.swift in Sources */,
 				5B89BCB126D3664200EC0084 /* TabBarViewController.swift in Sources */,
 				5B5FB15D26D140E4005A9805 /* Protocol.swift in Sources */,
+				5B31450926DE4D4E00BB5260 /* UIView+Additions.swift in Sources */,
 				5B86E09226D6A02700D1E4B8 /* AllCategorieViewController.swift in Sources */,
 				5B4C087826DA0A0500BA8CD4 /* AppSettings.swift in Sources */,
 				5BC65B9E26CB932900EB75FA /* RegisterViewController.swift in Sources */,
@@ -361,9 +407,15 @@
 				5B5D08A726D499FD005C7349 /* APIModels.swift in Sources */,
 				5B3144F626DE341000BB5260 /* AppController.swift in Sources */,
 				5B5FB15B26D0C7B7005A9805 /* MealsCollectionViewCell.swift in Sources */,
+				5B31450B26DE4D4F00BB5260 /* UICollectionView+Additions.swift in Sources */,
 				5B3144FA26DE436A00BB5260 /* DatabaseRepresentation.swift in Sources */,
 				5BC65BA726CB9C0000EB75FA /* Utilities.swift in Sources */,
+				5B31450126DE497300BB5260 /* Message.swift in Sources */,
+				5B31450026DE497300BB5260 /* ChatViewController.swift in Sources */,
+				5B31450826DE4D4E00BB5260 /* UIImage+Additions.swift in Sources */,
 				5BC65BA226CB936C00EB75FA /* HomeViewController.swift in Sources */,
+				5B31450226DE497300BB5260 /* Sender.swift in Sources */,
+				5B31450A26DE4D4F00BB5260 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

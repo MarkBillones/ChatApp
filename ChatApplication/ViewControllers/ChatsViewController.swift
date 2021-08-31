@@ -40,6 +40,7 @@ class ChatsViewController: UIViewController {
           snapshot.documentChanges.forEach { change in
             self.handleDocumentChange(change)
           }
+            self.chatsTableView.reloadData()
         }
     }
     
@@ -93,7 +94,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "IOS Team Chat"
+        cell.textLabel?.text = channels[indexPath.row].name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -101,9 +102,17 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if let _currentUser = currentUser {
+            
+            let channel = channels[indexPath.row]
+            let viewController = ChatViewController(user: _currentUser, channel: channel)
+            
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+        
         //show here the chat messages
-        let vc = ConversationViewController()
-        vc.title = "Messages"
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = ConversationViewController()
+//        vc.title = "Messages"
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
