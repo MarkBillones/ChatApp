@@ -51,6 +51,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, mealsDataDelega
         }
         
     }
+    
     //mealsData protocol
     func sendValue(selectedCategory: String) {
         
@@ -128,7 +129,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, mealsDataDelega
             meals = [] //empty the meals array
             mealsCollectionView?.reloadData()
             fetchPhotos(query: text)
-            
         }
     }
     
@@ -139,7 +139,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, mealsDataDelega
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         
-        
         if let buttonTitle = sender.title(for: .normal) {
             print(buttonTitle)
             
@@ -147,16 +146,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, mealsDataDelega
             mealsCollectionView?.reloadData()
             sender.backgroundColor = UIColor.green
             fetchPhotos(query: buttonTitle)
-            
-          }
-
+        }
     }
-    
-    @IBAction func seeAllButtonTapped(_ sender: Any) {
-//        
-    }
-    
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -247,39 +238,29 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension UIView {
-    
     func designCell() {
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        
     }
-    
     func designCellTwo() {
-        
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        
     }
 }
 
 extension UIButton {
-    
     func designButton() {
-        
         self.tintColor = .black
         self.layer.cornerRadius = 10
         self.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     func designButtonSelected() {
-        
         self.tintColor = .white
         self.layer.cornerRadius = 10
         self.layer.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
     }
-    
     func softCornerButton(sizeCR: CGFloat) {
-        
         self.layer.cornerRadius = sizeCR
     }
 }

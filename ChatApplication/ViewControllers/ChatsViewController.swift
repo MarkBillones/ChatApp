@@ -28,7 +28,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Mark Allen"
+        cell.textLabel?.text = "IOS Team Chat"
         cell.accessoryType = .disclosureIndicator
         return cell
     }

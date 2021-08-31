@@ -7,23 +7,6 @@
 
 import UIKit
 
-//model with properties for the collapsable table view
-class Section {
-    let title: String
-    let detailText: String
-    let options: [String]
-    var isOpened = false
-    
-    //initializer
-    init(title: String, detailsText: String, options: [String], isOpened: Bool = false){
-        //constructors
-        self.title = title
-        self.detailText = detailsText
-        self.options = options
-        self.isOpened = isOpened
-    }
-}
-
 class DetailsViewController: UIViewController{
 
     @IBOutlet var detailsTable: UITableView!
@@ -40,21 +23,14 @@ class DetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sections = [
-            Section(title: "Ingredients", detailsText: "Hide Details", options: [1,2,3].compactMap({return "Cell \($0)"})),
-            Section(title: "Instructions", detailsText: "Hide Details", options: [1,2].compactMap({return "Cell \($0)"})),
-            Section(title: "Sction 3", detailsText: "Hide Details", options: [1,2,3].compactMap({return "Cell \($0)"}))
-        ]
-        
         configure(mealQueryID: mealId)
         configureImgage(mealQueryID: mealImageString)
         
         detailsTable.delegate = self
         detailsTable.dataSource = self
         
-        mealsImageView.image = UIImage(systemName: "photo.fill")
         mealNameLabel.text = mealName
-        
+        mealsImageView.image = UIImage(systemName: "photo.fill")
     }
     
     func setMealName(lblString: String){
@@ -77,10 +53,30 @@ class DetailsViewController: UIViewController{
 
             do {
                 let jsonResult = try JSONDecoder().decode(lookupAPIResponce.self, from: data)
-                print("\(String(describing: jsonResult.meals.first))") // to check if i can get result when using that url
-                print("count of search by ID: \(jsonResult.meals.count)")
+//                print("\(String(describing: jsonResult.meals.first))") //check firdt item results
+//                print("count of search by ID: \(jsonResult.meals.count)")
+                let instruct = jsonResult.meals.first?.strInstructions ?? "There is no Instructions"
+                let ingredients1 = jsonResult.meals.first?.strIngredient1 ?? "none"
+                let ingredients2 = jsonResult.meals.first?.strIngredient2 ?? "none"
+                let ingredients3 = jsonResult.meals.first?.strIngredient3 ?? "none"
+                let ingredients4 = jsonResult.meals.first?.strIngredient4 ?? "none"
+                let ingredients5 = jsonResult.meals.first?.strIngredient5 ?? "none"
+                let ingredients6 = jsonResult.meals.first?.strIngredient6 ?? "none"
+                let measure1 = jsonResult.meals.first?.strMeasure1 ?? "none"
+                let measure2 = jsonResult.meals.first?.strMeasure2 ?? "none"
+                let measure3 = jsonResult.meals.first?.strMeasure3 ?? "none"
+                let measure4 = jsonResult.meals.first?.strMeasure4 ?? "none"
+                let measure5 = jsonResult.meals.first?.strMeasure5 ?? "none"
+                let measure6 = jsonResult.meals.first?.strMeasure6 ?? "none"
+                
                 DispatchQueue.main.async {
-                    
+                    self?.sections = [
+                        Section(title: "Ingredients", sectionDetailText: "Hide Details", detailsText: [measure1, measure2, measure3, measure4, measure5, measure6, ""],
+                                options: [ingredients1, ingredients2, ingredients3, ingredients4, ingredients5, ingredients6, ""]),
+                        
+                        Section(title: "Instructions", sectionDetailText: "Hide Details", detailsText: [""],
+                                options: [instruct, ""]),
+                    ]
                     self?.meals = jsonResult.meals
                     self?.detailsTable.reloadData()
                 }
@@ -132,23 +128,26 @@ extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         if indexPath.row == 0 {
-            
             cell.textLabel?.text = sections[indexPath.section].title
-            cell.detailTextLabel?.text = sections[indexPath.section].detailText
+            cell.detailTextLabel?.text = sections[indexPath.section].sectionDetailText
+            
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
             cell.detailTextLabel?.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
             
+            if sections[indexPath.section].isOpened == true {
+                cell.detailTextLabel?.text = "Hide Details"
+            }
+            else { cell.detailTextLabel?.text = "Show Details" }
         }
         else {
-            
             cell.textLabel?.text = sections[indexPath.section].options[indexPath.row - 1]
-            
+            cell.detailTextLabel?.text = sections[indexPath.section].detailText[indexPath.row - 1]
+            cell.textLabel?.numberOfLines = 0
         }
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -163,5 +162,25 @@ extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             print("sub cell is tapped")
         }
+    }
+}
+
+
+//model with properties for the collapsable table view
+class Section {
+    let title: String
+    var sectionDetailText: String = ""
+    let detailText: [String]
+    let options: [String]
+    var isOpened = false
+    
+    //initializer
+    init(title: String, sectionDetailText: String, detailsText: [String], options: [String], isOpened: Bool = true){
+        //constructors
+        self.title = title
+        self.sectionDetailText = sectionDetailText
+        self.detailText = detailsText
+        self.options = options
+        self.isOpened = isOpened
     }
 }
