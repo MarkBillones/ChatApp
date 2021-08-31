@@ -55,5 +55,9 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow to see current location.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow access to take a profile.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to select photo for your profile.</string>
 </dict>
 </plist>

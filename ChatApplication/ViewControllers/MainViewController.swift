@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainViewController: UIViewController {
 
@@ -16,6 +17,21 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        validateAuth()
+    }
+
+    private func validateAuth() {
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+             
+            let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController) //as? HomeViewController
+            
+            self.view.window?.rootViewController = homeViewController
+            self.view.window?.makeKeyAndVisible()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

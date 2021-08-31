@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import MessageKit
 import InputBarAccessoryView
 
@@ -45,7 +46,7 @@ class ConversationViewController: MessagesViewController, MessagesDataSource, Me
         messages.append(Message(sender: otherUser,
                                 messageId: "4",
                                 sentDate: Date().addingTimeInterval(-50000),
-                                kind: .text("2021-08-26 10:54:16.186175+0800 ChatApplication[5107:174692] 8.5.0 - [Firebase/Analytics][I-ACS023220] Analytics screen reporting is enabled. Call +[FIRAnalytics logEventWithName:FIREventScreenView parameters:] to log a screen view event. To disable automatic screen reporting, set the flag FirebaseAutomaticScreenReportingEnabled to NO (boolean) in the Info.plist")))
+                                kind: .text("Analytics screen reporting is enabled. Call +[FIRAnalytics logEventWithName:FIREventScreenView parameters:] to log a screen view event.")))
         
         messages.append(Message(sender: currentUser,
                                 messageId: "5",

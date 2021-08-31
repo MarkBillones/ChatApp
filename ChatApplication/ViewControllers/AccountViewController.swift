@@ -30,10 +30,10 @@ final class AccountViewController: UIViewController {
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
         
         data.append(ProfileViewModel(viewModelType: .info,
-                                     title: "Name: \(UserDefaults.standard.value(forKey:"name") as? String ?? "Mark Allen Billones")",
+                                     title: "Name: \(/*AppSettings.currentEmail as? String ??*/ "Mark Allen Billones")",
                                      handler: nil))
         data.append(ProfileViewModel(viewModelType: .info,
-                                     title: "Email: \(AppSettings.currentEmail as? String ?? "No Email")",
+                                     title: "Email: \(UserDefaults.standard.value(forKey:"email") ?? "No Email")",
                                      handler: nil))
         data.append(ProfileViewModel(viewModelType: .logout, title: "Log Out", handler: { [weak self] in
             

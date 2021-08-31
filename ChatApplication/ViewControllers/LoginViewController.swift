@@ -107,7 +107,6 @@ class LoginViewController: UIViewController {
             else {
                 
                 UserDefaults.standard.set(email, forKey: "email")
-                AppSettings.currentEmail = defaultEmail
                 // programmatically  segue to home
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController) //as? HomeViewController
                 
