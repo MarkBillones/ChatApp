@@ -34,28 +34,4 @@ final class AppController {
     @objc private func handleAppState() {
         
     }
-
-//  func show(in window: UIWindow?) {
-//    guard let window = window else {
-//      fatalError("Cannot layout app with a nil window.")
-//    }
-//
-//    self.window = window
-//    window.tintColor = .primary
-//    window.backgroundColor = .white
-//
-//    handleAppState()
-//
-//    window.makeKeyAndVisible()
-//  }
-
-//  // MARK: - Notifications
-//  @objc private func handleAppState() {
-//    if let user = Auth.auth().currentUser {
-//      let channelsViewController = ChannelsViewController(currentUser: user)
-//      rootViewController = NavigationController(channelsViewController)
-//    } else {
-//      rootViewController = LoginViewController()
-//    }
-//  }
 }
